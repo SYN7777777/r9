@@ -4,7 +4,7 @@ import investment from "../assets/finance/investment.png";
 import loan from "../assets/finance/loan.png";
 import payment from "../assets/finance/payment.png";
 import saving from "../assets/finance/saving.png";
-import tracking from "../assets/finance/tracking.png";
+import tracking from "../assets/finance/Tracking.png";
 
 const Finance = () => {
   return (
