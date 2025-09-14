@@ -23,40 +23,40 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-10 px-6 sm:px-16 md:px-16">
+    <section className="py-10 px-4 sm:px-8 md:px-16">
       {/* Top Heading */}
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4 md:gap-0">
         <div>
           <p className="text-sm tracking-widest uppercase text-gray-500">
             Testimonials
           </p>
-          <h2 className="text-3xl mt-2 font-bold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl mt-2 font-bold text-gray-900">
             Hear from Our Clients
           </h2>
         </div>
         <a
           href="#"
-          className="text-red-500 font-medium  hover:text-red-600 transition"
+          className="text-red-500 font-medium hover:text-red-600 transition"
         >
           See All Testimonials
         </a>
       </div>
 
       {/* Cards */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((t, index) => (
           <div
             key={index}
-            className="bg-white shadow-sm rounded-lg p-8 h-[288px] w-[364] border border-gray-100"
+            className="bg-white shadow-sm rounded-lg p-6 border border-gray-100 flex flex-col"
           >
             {/* Profile */}
-            <div className="flex items-center shadow-sm p-6 gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4">
               <img
                 src={t.image}
                 alt={t.name}
                 className="w-12 h-12 rounded-full object-cover"
               />
-              <div>
+              <div className="flex-1">
                 <div className="flex text-yellow-400 mb-1">
                   {Array(5)
                     .fill()
@@ -72,13 +72,16 @@ const Testimonials = () => {
                       </svg>
                     ))}
                 </div>
-                <h3 className="font-semibold text-gray-800">
+                <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
                   {t.name}, <span className="font-normal">{t.role}</span>
                 </h3>
               </div>
             </div>
+
             {/* Testimonial text */}
-            <p className="text-gray-600 text-sm leading-relaxed mt-12">{t.text}</p>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mt-2 sm:mt-4 flex-1">
+              {t.text}
+            </p>
           </div>
         ))}
       </div>
