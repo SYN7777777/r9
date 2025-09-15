@@ -1,57 +1,123 @@
-import React from "react";
+import React, { memo } from "react";
+import { motion } from "framer-motion";
 import indianwoman from "../assets/woman.png";
 
 const Ourvision = () => {
   return (
-    <div className="bg-white py-8 sm:py-16 px-4 md:px-8 lg:px-16">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="  bg-white py-8 sm:py-16 px-4 md:px-8 lg:px-16"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 ">
-          {/* Image Section */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[570.5px]">
-              <img
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16"
+        >
+          {/* Image Section - Updated spacing and sizing */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full md:w-[500px] flex justify-center md:justify-end"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-[450px]"
+            >
+              <motion.img
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
                 src={indianwoman}
                 alt="Indian woman"
-                className="w-[570.5px] h-[546px] rounded-[33px] shadow-lg object-contain"
+                className="w-full h-auto rounded-lg shadow-lg object-contain"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Text Section */}
-          <div className="w-full md:w-1/2  flex flex-col gap-6 sm:gap-8">
-            <div>
-              <h1 className="font-outfit font-bold text-3xl sm:text-4xl md:text-[64px] leading-snug sm:leading-[55.02px] text-gray-800 mb-3">
+          {/* Text Section - Kept the same width but improved alignment */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="w-full md:w-[607px] min-h-[300px] md:h-[432px] flex flex-col  gap-6 sm:gap-[30px] opacity-100"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 font-outfit"
+              >
                 Our Vision
-              </h1>
-
-              <p className="font-outfit font-normal text-[16px] leading-[32px] text-gray-600">
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="text-sm sm:text-base text-gray-600 leading-relaxed font-outfit max-w-full md:max-w-[607px]"
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Per
                 turismf lorem purus justo, ultricies. Sedlid hutin odio
                 elementum urna placerret lacus, vulputate. Non malesuada viverra
                 eri ultricies crea. Tincidunt tempor, blandit augue ac feugiat.
                 Prossent erau tempusullamcorper quisque in. Magna fermentum,
                 lecus, fermentum erau.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
-            <div>
-              <h1 className="font-outfit font-bold text-4xl sm:text-5xl md:text-[64px] leading-snug sm:leading-[55.02px] text-gray-800 mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 font-outfit"
+              >
                 Our Mission
-              </h1>
-              <p className="font-outfit font-normal text-[16px] leading-[32px] text-gray-600">
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.4 }}
+                className="text-sm sm:text-base text-gray-600 leading-relaxed font-outfit max-w-full md:max-w-[607px]"
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Per
                 turismf lorem purus justo, ultricies. Sedlid hutin odio
                 elementum urna placerret lacus, vulputate. Non malesuada viverra
                 eri ultricies crea. Tincidunt tempor, blandit augue ac feugiat.
                 Prossent erau tempusullamcorper quisque in. Magna fermentum,
                 lecus, fermentum erau.
-              </p>
-            </div>
-          </div>
-        </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default Ourvision;
+export default memo(Ourvision);

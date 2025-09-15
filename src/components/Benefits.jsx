@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+import { motion } from "framer-motion";
 import group14 from "../assets/benefits/Group 14.svg";
 import group15 from "../assets/benefits/Group 15.svg";
 import group17 from "../assets/benefits/Group 17.svg";
@@ -15,36 +16,73 @@ const Benefits = () => {
       <section className="relative py-12 sm:py-18 bg-white overflow-hidden w-full max-w-[1440px] mx-auto">
         <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-8">
           {/* ===== Hero Section ===== */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-6 items-center mb-10 md:mb-7">
-            <div>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-6 items-center mb-10 md:mb-7"
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <h2 className="font-outfit font-bold text-[67px] leading-[80px] text-gray-900 ml-0 md:ml-[68px]">
                 Enjoy Our
                 <br />
                 Excellent Service
               </h2>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <p className="font-outfit font-normal text-[16px] leading-[24px] text-gray-600 ml-0 md:ml-[98px] mt-4 md:mt-0">
                 gravida sed gravida risus sollicitudin. Sed dolor sapien Donec
                 tincidunt lobortis, ex tincidunt volutpat non.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* ===== Cards Section ===== */}
-          <div className="relative mb-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="relative mb-2"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
               {/* Card 1 */}
-              <div className="relative">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                className="relative"
+              >
                 <img
                   src={group14}
                   alt="Card 1"
                   className="w-[388px] h-[464px] object-contain"
                 />
                 {/* Navigation buttons */}
-                <div className="absolute bottom-6 left-30/20 transform -translate-x-1/2 flex gap-3">
-                  <button
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                  className="absolute bottom-6 left-30/20 transform -translate-x-1/2 flex gap-3"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                     aria-label="prev"
                     className="w-[40px] h-[40px] rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
                     style={{
@@ -65,9 +103,11 @@ const Benefits = () => {
                         d="M15 19l-7-7 7-7"
                       />
                     </svg>
-                  </button>
+                  </motion.button>
 
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                     aria-label="next"
                     className="w-[40px] h-[40px] rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
                     style={{
@@ -88,25 +128,35 @@ const Benefits = () => {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </button>
-                </div>
-              </div>
+                  </motion.button>
+                </motion.div>
+              </motion.div>
 
               {/* Card 2 */}
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                whileHover={{ scale: 1.05 }}
                 src={group15}
                 alt="Card 2"
                 className="w-[388px] h-[464px] object-contain"
               />
 
               {/* Card 3 */}
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                whileHover={{ scale: 1.05 }}
                 src={group17}
                 alt="Card 3"
                 className="w-[388px] h-[464px] object-contain"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -152,4 +202,4 @@ const Benefits = () => {
   );
 };
 
-export default Benefits;
+export default memo(Benefits);

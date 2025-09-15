@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.svg";
 
 const Navbar = () => {
@@ -11,7 +12,12 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-md">
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-md"
+      >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <div className="flex items-center gap-3">
@@ -102,19 +108,29 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Overlay */}
-        <div
-          className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-300 md:hidden z-40 ${
-            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-          onClick={toggleMenu}
-        ></div>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden z-40"
+              onClick={toggleMenu}
+            />
+          )}
+        </AnimatePresence>
 
         {/* Mobile Menu Sidebar */}
-        <div
-          className={`fixed top-0 right-0 h-full w-64 sm:w-72 bg-white shadow-2xl transition-transform duration-300 ease-in-out z-50 md:hidden ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-64 sm:w-72 bg-white shadow-2xl z-50 md:hidden"
+            >
           <div className="flex flex-col h-full p-6">
             {/* Close Button */}
             <div className="flex justify-end mb-8">
@@ -159,8 +175,10 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-        </div>
-      </header>
+        </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
 
       {/* Prevent body scrolling when menu is open */}
       <style>
@@ -174,4 +192,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

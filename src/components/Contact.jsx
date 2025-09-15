@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+import { motion } from "framer-motion";
 import { FiPhone } from "react-icons/fi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
@@ -7,45 +8,104 @@ import img2 from "../assets/contact/img2.png"; // UAE
 import img3 from "../assets/contact/img3.png"; // India
 import img4 from "../assets/contact/img4.png"; // HQ Marshall Islands
 
-export const Contact = () => {
+export const Contact = memo(() => {
   return (
-    <div className="bg-white py-16 px-4 sm:px-8 lg:px-12 max-w-[1290px] mx-auto">
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="bg-white py-16 px-4 sm:px-8 lg:px-12 max-w-[1290px] mx-auto"
+    >
       {/* HQ + Form Layout */}
-      <div className="flex flex-col lg:flex-row justify-between mb-20 gap-10">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="flex flex-col lg:flex-row justify-between mb-20 gap-10"
+      >
         {/* Left Column */}
-        <div className="flex flex-col gap-6 w-full lg:w-1/2">
-          <button className="bg-[rgba(255,228,228,1)] text-[rgba(88,88,91,1)] text-xs sm:text-sm font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl self-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col gap-6 w-full lg:w-1/2"
+        >
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[rgba(255,228,228,1)] text-[rgba(88,88,91,1)] text-xs sm:text-sm font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl self-start"
+          >
             GET STARTED
-          </button>
+          </motion.button>
 
-          <h2 className="text-lg sm:text-xl font-semibold">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-lg sm:text-xl font-semibold"
+          >
             Head Quarters: Contact Info
-          </h2>
+          </motion.h2>
 
-          <div className="relative mx-auto sm:mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            whileHover={{ scale: 1.05 }}
+            className="relative mx-auto sm:mx-auto"
+          >
             <img
               src={img4}
               alt="HQ - Marshall Islands"
               className=" sm:w-[236px] sm:h-[240px]  h-auto rounded-xl object-cover"
             />
-          </div>
+          </motion.div>
 
           {/* Phone */}
-          <div className="flex items-center space-x-4">
-            <div className="bg-red-500 p-3 rounded-md flex items-center justify-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="flex items-center space-x-4"
+          >
+            <motion.div 
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+              className="bg-red-500 p-3 rounded-md flex items-center justify-center"
+            >
               <FiPhone className="w-6 h-6 text-white" />
-            </div>
+            </motion.div>
             <div>
               <h3 className="font-medium text-gray-800">Phone Number</h3>
               <p className="text-gray-600 text-sm sm:text-lg">111111111111</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Address */}
-          <div className="flex items-start space-x-4">
-            <div className="bg-red-600 p-3 rounded-md flex items-center justify-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            className="flex items-start space-x-4"
+          >
+            <motion.div 
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+              className="bg-red-600 p-3 rounded-md flex items-center justify-center"
+            >
               <FaMapMarkerAlt className="w-6 h-6 text-white" />
-            </div>
+            </motion.div>
             <div>
               <h3 className="font-medium text-gray-800">Physical Address</h3>
               <p className="text-gray-600 text-sm sm:text-lg">
@@ -54,103 +114,214 @@ export const Contact = () => {
                 Majuro, Marshall Islands
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Column: Contact Form */}
-        <div className="bg-[rgba(255,228,228,1)] rounded-[10px] flex flex-col gap-5 p-6 sm:p-8 lg:p-10 w-full lg:w-[520px]">
-          <div>
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          whileHover={{ scale: 1.02 }}
+          className="bg-[rgba(255,228,228,1)] rounded-[10px] flex flex-col gap-5 p-6 sm:p-8 lg:p-10 w-full lg:w-[520px]"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
             <label className="block text-[rgba(60,60,60,1)] mb-2 text-sm sm:text-base">
               Your Name
             </label>
-            <input
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
               type="text"
               placeholder="Enter Your Name"
               className="w-full px-4 py-3 border bg-white border-gray-300 rounded-md focus:outline-none focus:border-pink-300"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+          >
             <label className="block text-gray-700 mb-2 text-sm sm:text-base">
               Your Email
             </label>
-            <input
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
               type="email"
               placeholder="Enter Your Email"
               className="w-full px-4 py-3 border bg-white border-gray-300 rounded-md focus:outline-none focus:border-pink-300"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
             <label className="block text-gray-700 mb-2 text-sm sm:text-base">
               Your Message
             </label>
-            <textarea
+            <motion.textarea
+              whileFocus={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
               rows="4"
               placeholder="Enter Your Message"
               className="w-full px-4 py-3 border bg-white border-gray-300 rounded-md focus:outline-none focus:border-pink-300 resize-none"
             />
-          </div>
-          <button className="w-full sm:w-[163px] h-[50px] sm:h-[57px] bg-[rgba(60,60,60,1)] text-white rounded-md font-semibold hover:bg-gray-800 transition">
+          </motion.div>
+          <motion.button 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-[163px] h-[50px] sm:h-[57px] bg-[rgba(60,60,60,1)] text-white rounded-md font-semibold hover:bg-gray-800 transition"
+          >
             Send Message
-          </button>
-        </div>
-      </div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
 
       {/* Branches Info Section */}
-      <div className="mx-auto w-full max-w-[920px]">
-        <h2 className="text-lg sm:text-xl font-semibold text-center mb-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="mx-auto w-full max-w-[920px]"
+      >
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-lg sm:text-xl font-semibold text-center mb-10"
+        >
           Branches: Contact Info
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center"
+        >
           {/* Switzerland */}
-          <div className="flex  flex-col items-center gap-3">
-            <img
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="flex  flex-col items-center gap-3"
+          >
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
               src={img1}
               alt="Switzerland"
               className="w-full h-[330px] sm:h-[236px] object-cover rounded-md"
             />
-            <div className="flex items-center gap-2 mt-2">
-              <div className="bg-red-500 p-2 rounded-md">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="flex items-center gap-2 mt-2"
+            >
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="bg-red-500 p-2 rounded-md"
+              >
                 <FiPhone className="w-4 h-4 text-white" />
-              </div>
+              </motion.div>
               <p className="font-semibold text-sm sm:text-base">Phone Number</p>
-            </div>
+            </motion.div>
             <p className="text-gray-600 text-sm sm:text-lg">+41779031105</p>
-          </div>
+          </motion.div>
 
           {/* UAE */}
-          <div className="flex flex-col items-center gap-3">
-            <img
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="flex flex-col items-center gap-3"
+          >
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
               src={img2}
               alt="UAE"
               className="w-full h-[330px] sm:h-[236px] object-cover rounded-md"
             />
-            <div className="flex items-center gap-2 mt-2">
-              <div className="bg-red-500 p-2 rounded-md">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="flex items-center gap-2 mt-2"
+            >
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="bg-red-500 p-2 rounded-md"
+              >
                 <FiPhone className="w-4 h-4 text-white" />
-              </div>
+              </motion.div>
               <p className="font-semibold text-sm sm:text-base">Phone Number</p>
-            </div>
+            </motion.div>
             <p className="text-gray-600 text-sm sm:text-lg">+41779031105</p>
-          </div>
+          </motion.div>
 
           {/* India */}
-          <div className="flex flex-col items-center gap-3">
-            <img
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="flex flex-col items-center gap-3"
+          >
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
               src={img3}
               alt="India"
               className="w-full h-[330px] sm:h-[236px] object-cover rounded-md"
             />
-            <div className="flex items-center gap-2 mt-2">
-              <div className="bg-red-500 p-2 rounded-md">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.6 }}
+              className="flex items-center gap-2 mt-2"
+            >
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="bg-red-500 p-2 rounded-md"
+              >
                 <FiPhone className="w-4 h-4 text-white" />
-              </div>
+              </motion.div>
               <p className="font-semibold text-sm sm:text-base">Phone Number</p>
-            </div>
+            </motion.div>
             <p className="text-gray-600 text-sm sm:text-lg">+971701036671</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
-};
+});
